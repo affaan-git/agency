@@ -1,0 +1,18 @@
+{
+  "name": "affaan-git",
+  "description": "Agent-related Claude Code plugin by affaan-git.",
+  "owner": {
+    "name": "affaan-git"
+  },
+  "plugins": [
+    {
+      "name": "agency",
+      "description": "Agent-related build skills for Claude Code.",
+      "source": "./",
+      "version": "0.1.0",
+      "author": {
+        "name": "affaan-git"
+      }
+    }
+  ]
+}

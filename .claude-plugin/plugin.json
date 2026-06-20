@@ -1,0 +1,19 @@
+{
+  "name": "agency",
+  "description": "Agent-related build skills for Claude Code.",
+  "version": "0.1.0",
+  "author": {
+    "name": "affaan-git"
+  },
+  "homepage": "https://github.com/affaan-git/agency",
+  "repository": "https://github.com/affaan-git/agency",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agents",
+    "multi-agent",
+    "build",
+    "orchestration",
+    "team"
+  ]
+}

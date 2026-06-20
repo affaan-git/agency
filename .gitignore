@@ -1,0 +1,9 @@
+# OS
+desktop.ini
+.DS_Store
+
+# Editor
+*.swp
+*~
+.idea/
+.vscode/

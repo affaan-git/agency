@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img">
+  <title>Monochrome letter-A monogram with circular flow</title>
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#222632"/>
+      <stop offset="1" stop-color="#11131a"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M0 1 L9 5 L0 9 Z" fill="#9aa1b2"/>
+    </marker>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#badge)"/>
+  <rect x="8.5" y="8.5" width="239" height="239" rx="53.5" fill="none" stroke="#3a4150"/>
+
+  <path d="M97.2 48.4 A90 90 0 1 0 158.8 48.4" fill="none" stroke="#9aa1b2" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g fill="none" stroke="#f4f5f7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="128" y1="51" x2="60" y2="191"/>
+    <line x1="128" y1="51" x2="196" y2="191"/>
+    <line x1="83" y1="144" x2="173" y2="144"/>
+  </g>
+
+  <g fill="#f4f5f7" stroke="#11131a" stroke-width="4">
+    <circle cx="60" cy="191" r="13"/>
+    <circle cx="196" cy="191" r="13"/>
+    <circle cx="83" cy="144" r="10"/>
+    <circle cx="173" cy="144" r="10"/>
+    <circle cx="128" cy="51" r="18"/>
+  </g>
+  <circle cx="128" cy="51" r="7" fill="#11131a"/>
+</svg>
