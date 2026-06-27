@@ -550,29 +550,16 @@ Any failure triggers the Master Rule.
 
 Long builds may cross a context compression. After compression the only state that survives is files, memory, and the compressed summary. Plan for it.
 
-Maintain an in-repo resume document, for example SESSION_STATE.md at the project root. This is distinct from cross-conversation memory. Memory is for facts about the user. This document is for the state of this build.
+Maintain the build's resume record, SESSION_STATE.md at the project root. This is distinct from cross-conversation memory. Memory is for facts about the user. This record is for the state of this build.
 
-The document holds:
+- To write or update the record, invoke the save-state skill. Do this after every meaningful decision and every completed phase, and before any likely compression. After compression it is the only reliable record.
+- To resume, invoke the resume skill before changing anything, then apply the build-specific check below.
 
-- verbatim user constraints, in quotation marks, with dates
-- off-limits files, each with its reason
-- decisions made and decisions rejected, with who and when
-- phase status: done, next, blocked
-- files created or changed, one line of purpose each
-- open questions, numbered, each with a current best answer or awaiting user
-- a resume procedure: literal steps for a fresh lead reading this cold
+The save-state and resume skills hold the record schema, the update discipline, and the read-only resume verification. Invoke them rather than restating them; invoking loads their content, while merely naming a skill does not.
 
-Update discipline:
+Build-specific resume check, in addition to the resume skill:
 
-- Update the document after every meaningful decision and every completed phase.
-- Update it before any likely compression. After compression it is the only reliable record.
-- Do not put derivable code patterns or stale architecture snapshots in it. Reference the actual files instead.
-
-On resume:
-
-- Run cheap, read-only checks to confirm the recorded state still holds before changing anything. Do not act on the resume document's claims without verifying them against the actual files.
 - A dead or interrupted agent may leave an orphaned worktree, branch, or background job behind. Inspect it before removing anything: an orphaned worktree can hold uncommitted edits that are the only copy of real work. Preserve or surface that work first, and remove the leftover only after confirming nothing of value would be lost. Stop a background job that is still running.
-- Treat only genuinely derived state as disposable: build output and other artifacts that regenerate from tracked source. When that state is corrupted, discard and regenerate it rather than repairing it in place. Working-tree edits are not derived state; do not discard them to clear a corrupted build.
 
 ## Common Agent Failure Modes
 
