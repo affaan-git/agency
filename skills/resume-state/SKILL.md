@@ -1,10 +1,10 @@
 ---
-name: resume
+name: resume-state
 description: Resumes work from a saved SESSION_STATE.md record. Use when picking up where a previous session left off.
 argument-hint: "[context]"
 ---
 
-# Resume
+# Resume State
 
 Resume work from a saved session record.
 

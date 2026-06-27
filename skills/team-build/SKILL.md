@@ -553,11 +553,11 @@ Long builds may cross a context compression. After compression the only state th
 Maintain the build's resume record, SESSION_STATE.md at the project root. This is distinct from cross-conversation memory. Memory is for facts about the user. This record is for the state of this build.
 
 - To write or update the record, invoke the save-state skill. Do this after every meaningful decision and every completed phase, and before any likely compression. After compression it is the only reliable record.
-- To resume, invoke the resume skill before changing anything, then apply the build-specific check below.
+- To resume, invoke the resume-state skill before changing anything, then apply the build-specific check below.
 
-The save-state and resume skills hold the record schema, the update discipline, and the read-only resume verification. Invoke them rather than restating them; invoking loads their content, while merely naming a skill does not.
+The save-state and resume-state skills hold the record schema, the update discipline, and the read-only resume verification. Invoke them rather than restating them; invoking loads their content, while merely naming a skill does not.
 
-Build-specific resume check, in addition to the resume skill:
+Build-specific resume check, in addition to the resume-state skill:
 
 - A dead or interrupted agent may leave an orphaned worktree, branch, or background job behind. Inspect it before removing anything: an orphaned worktree can hold uncommitted edits that are the only copy of real work. Preserve or surface that work first, and remove the leftover only after confirming nothing of value would be lost. Stop a background job that is still running.
 
