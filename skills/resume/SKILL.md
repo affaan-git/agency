@@ -8,7 +8,7 @@ argument-hint: "[context]"
 
 Resume work from a saved session record.
 
-Read SESSION_STATE.md from the working directory. Treat $ARGUMENTS[0], when given, as additional context alongside the record, for example the last message from before compaction. If no record exists, say so and stop.
+Read SESSION_STATE.md from the working directory. If SESSION_STATE.md is a symlink, stop and report rather than reading through it. Treat $ARGUMENTS[0], when given, as additional context alongside the record, for example the last message from before compaction. If no record exists, say so and stop.
 
 On resume:
 
