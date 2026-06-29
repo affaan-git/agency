@@ -106,12 +106,13 @@ Some files must not be read, edited, or parsed. Examples: files the user has fla
 
 ## Step 1: Validate Arguments
 
-1. Confirm a plan path was provided.
-2. Normalize the path.
-3. Confirm the path is allowed.
-4. Reject paths targeting secrets, credentials, unrelated locations, or system data.
-5. Read additional instruction if provided.
-6. Confirm additional instruction does not conflict with this file or the plan.
+1. Look for a SESSION_STATE.md record in the working directory. If it is a symlink, do not read or write through it, and trigger the Master Rule.
+2. Confirm a plan path was provided. A missing plan path is expected when a record is present, and an issue otherwise.
+3. If a plan path was provided, normalize the path.
+4. Confirm the path is allowed.
+5. Reject paths targeting secrets, credentials, unrelated locations, or system data.
+6. Read additional instruction if provided.
+7. Confirm additional instruction does not conflict with this file or the plan.
 
 Rules for Additional Instruction:
 
@@ -122,6 +123,14 @@ Rules for Additional Instruction:
 - If it asks to skip safety checks, validation, review, or security checks, trigger the Master Rule.
 
 If any issue exists, trigger the Master Rule.
+
+After validation, branch on whether a record is present:
+
+- A record present with no plan path is a resume: follow Resume and Continuity and continue from the recorded state. Do not restart the steps from the beginning, and do not overwrite the record. The plan stays available to consult; it is simply no longer the starting point. The validated instruction still applies.
+- A record present together with a plan path is ambiguous: it may be a resume, or a new build over a leftover record. Do not guess. Surface both readings to the user and trigger the Master Rule; continue only after the user chooses.
+- No record present is a fresh build: continue to Step 2.
+
+A resume continues from where the record leaves off; the steps still ahead of that point are not skipped.
 
 ## Step 2: Read Plan
 
@@ -550,7 +559,7 @@ Any failure triggers the Master Rule.
 
 Long builds may cross a context compression. After compression the only state that survives is files, memory, and the compressed summary. Plan for it.
 
-Maintain the build's resume record, SESSION_STATE.md at the project root. This is distinct from cross-conversation memory. Memory is for facts about the user. This record is for the state of this build.
+Maintain the build's resume record, SESSION_STATE.md in the working directory. This is distinct from cross-conversation memory. Memory is for facts about the user. This record is for the state of this build.
 
 - To write or update the record, invoke the save-state skill. Do this after every meaningful decision and every completed phase, and before any likely compression. After compression it is the only reliable record.
 - To resume, invoke the resume-state skill before changing anything, then apply the build-specific check below.
