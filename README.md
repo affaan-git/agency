@@ -23,7 +23,7 @@ Leads an agent team through a build from a markdown plan, with explicit file own
 /agency:team-build <plan-path> [instruction]
 ```
 
-- `plan-path` - path to a markdown file describing what to build.
+- `plan-path` - path to a markdown file describing what to build. Omit it to resume an in-progress build from its `SESSION_STATE.md` record.
 - `instruction` *(optional)* - a scope note, preference, or constraint for the run.
 
 Example:
