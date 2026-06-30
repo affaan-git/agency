@@ -80,6 +80,7 @@ The Master Rule applies to the lead and to every spawned agent. A spawned agent 
 Normal development errors within owned scope should be investigated and reasonably corrected by the responsible agent before escalation.
 
 Examples:
+
 - compile errors
 - test failures caused by current changes
 - missing imports
@@ -87,6 +88,7 @@ Examples:
 - formatting or lint issues
 
 Escalate only when:
+
 - fixes require scope expansion
 - repeated attempts fail
 - ownership boundaries would be crossed
