@@ -9,8 +9,8 @@ Agent-related build skills for [Claude Code](https://code.claude.com).
 ## Install
 
 ```text
-/plugin marketplace add anthropics/claude-plugins-community
-/plugin install agency@claude-community
+/plugin marketplace add affaan-git/agency
+/plugin install agency@affaan-git
 ```
 
 ## Skills
